@@ -131,13 +131,16 @@ def send_request(url):
     q.add_header('Cookie', args.cookies)
 
     try:
+        print('1')
         sslcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
         response = urlopen(q, timeout=args.timeout, context=sslcontext)
     except:
         try:
+            print('2')
             sslcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
             response = urlopen(q, timeout=args.timeout, context=sslcontext)
         except:
+            print('3')
             ctx = ssl.create_default_context()
             ctx.check_hostname = False
             ctx.verify_mode = ssl.CERT_NONE
@@ -341,6 +344,7 @@ if __name__ == "__main__":
                 file = send_request(url)
             except Exception as e:
                 parser_error("invalid input defined or SSL error: %s" % e)
+                traceback.print_exc()
         else:
             file = url['js']
             url = url['url']
