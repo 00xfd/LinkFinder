@@ -9,6 +9,7 @@ os.environ["BROWSER"] = "open"
 
 # Import libraries
 import re, sys, glob, html, argparse, jsbeautifier, webbrowser, subprocess, base64, ssl, xml.etree.ElementTree
+import traceback
 
 from gzip import GzipFile
 from string import Template
