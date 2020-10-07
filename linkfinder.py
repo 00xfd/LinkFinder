@@ -119,6 +119,7 @@ def send_request(url):
     '''
     Send requests with Requests
     '''
+    print('here')
     q = Request(url)
 
     q.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) \
@@ -142,13 +143,14 @@ def send_request(url):
             ctx.verify_mode = ssl.CERT_NONE
             response = urlopen(q, timeout=args.timeout, context=ctx)
 
+    print(response)
     if response.info().get('Content-Encoding') == 'gzip':
         data = GzipFile(fileobj=readBytesCustom(response.read())).read()
     elif response.info().get('Content-Encoding') == 'deflate':
         data = response.read().read()
     else:
         data = response.read()
-
+    print(data)
     return data.decode('utf-8', 'replace')
 
 def getContext(list_matches, content, include_delimiter=0, context_delimiter_str="\n"):
@@ -327,6 +329,7 @@ if __name__ == "__main__":
     if args.output == "cli":
         mode = 0
 
+    print('start')
     # Convert input to URLs or JS files
     urls = parser_input(args.input)
 
