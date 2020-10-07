@@ -8,6 +8,6 @@ setup(
     description="A python script that finds endpoints in JavaScript files.",
     long_description=open('README.md').read(),
     author='Gerben Javado',
-    url='https://github.com/GerbenJavado/LinkFinder',
+    url='https://github.com/00xfd/LinkFinder',
     install_requires=['argparse', 'jsbeautifier'],
 )
